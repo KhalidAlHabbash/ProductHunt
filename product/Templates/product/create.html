@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Upload Your Product!</h1>
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="product-title"><u>Product Name:<u/></label><br/>
+    <input type="text" placeholder="..." name="product-title"/>
+    <br/>
+    <br/>
+    <label for="product-desc"><u>Product Description:</u></label><br/>
+    <input type="textbox" placeholder="..." name="product-desc" width="200" height="200">
+    <br/>
+    <br/>
+    <label for="URL"><u>URL:<u/></label>
+    <br/>
+    <input type="text" placeholder="..." name="URL"/>
+    <br/>
+    <br/>
+    <label for="id_product-icon"><u>Product Icon:<u/></label>
+    <br/>
+    <input id="id_product-icon" type="file" placeholder="..." name="product-icon"/>
+    <br/>
+    <br/>
+    <label for="id_product-image"><u>Product Image:<u/></label>
+    <br/>
+    <input id="id_product-image" type="file" placeholder="..." name="product-image"/>
+    <br/>
+    <br/>
+    <input class="btn btn-primary" type="submit" value="Upload Product">
+
+
+
+
+
+</form>
+
+
+{% endblock %}
