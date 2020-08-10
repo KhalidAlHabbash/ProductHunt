@@ -2,9 +2,15 @@ from django.shortcuts import render,redirect
 from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.shortcuts import render, get_object_or_404
 
 def home(request):
+    all_products = Product.objects
     return render(request,'product/home.html')
+
+def detail(request,product_id):
+    products = get_object_or_404(Product,pk=product_id)
+    return render(request,'product/detail.html', {'products':products})
 
 @login_required
 def create(request):
@@ -23,9 +29,9 @@ def create(request):
                 product.product_url = "http://" + request.POST["URL"]
 
             product.save()
-            return redirect('home')
+            return redirect('/products/' + str(product.id))
         else:
-            return render(request, 'product/create.html', {"errorP":"Please fill in all the information required"})
+            return render(request, 'product/create.html', {"errorP":"Please fill in all the fields"})
     else:
         return render(request, 'product/create.html')
 

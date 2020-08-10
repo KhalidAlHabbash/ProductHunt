@@ -1,39 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Upload Your Product!</h1>
+{% if errorP %}
+<h5>{{ errorP }}</h5>
+{% endif %}
 <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="product-title"><u>Product Name:<u/></label><br/>
-    <input type="text" placeholder="..." name="product-title"/>
+    <label><u>Product Name:</u></label><br/>
+    <input type="text" name="product-title"/>
     <br/>
     <br/>
     <label for="product-desc"><u>Product Description:</u></label><br/>
-    <input type="textbox" placeholder="..." name="product-desc" width="200" height="200">
+    <textarea cols="50" rows="10" name="product-desc"></textarea>
     <br/>
     <br/>
-    <label for="URL"><u>URL:<u/></label>
+    <label for="URL"><u>URL:</u></label>
     <br/>
-    <input type="text" placeholder="..." name="URL"/>
-    <br/>
-    <br/>
-    <label for="id_product-icon"><u>Product Icon:<u/></label>
-    <br/>
-    <input id="id_product-icon" type="file" placeholder="..." name="product-icon"/>
+    <input type="text"  name="URL"/>
     <br/>
     <br/>
-    <label for="id_product-image"><u>Product Image:<u/></label>
+    <label><u>Product Icon:</u></label>
     <br/>
-    <input id="id_product-image" type="file" placeholder="..." name="product-image"/>
+    <input type="file"  name="product-icon"/>
+    <br/>
+    <br/>
+    <label><u>Product Image:</u></label>
+    <br/>
+    <input type="file"  name="product-image"/>
     <br/>
     <br/>
     <input class="btn btn-primary" type="submit" value="Upload Product">
-
-
-
-
-
 </form>
-
-
 {% endblock %}
+
+   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+            <div class="">
+                <h1 class="display-4 font-italic"><u>All Products</u></h1>
+                {% load static %}
+                <div class="row">
+                    <div class="col-8">
+                        Product Hunt brings value to our Hunter by allowing other Hunters to express their opinion on ones project. This is beneficial as it helps improve and innovate one's idea to the greater. Strive for improvement with Product Hunt!
+                    </div>
+                    <div class="col-4 text-right">
+                        <img src="{% static 'letter-p.png' %}" class="img-fluid" width="100" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
