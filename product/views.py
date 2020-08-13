@@ -4,9 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
+@login_required
 def home(request):
     all_products = Product.objects
-    return render(request,'product/home.html')
+    return render(request,'product/home.html', {"all_products":all_products})
 
 def detail(request,product_id):
     products = get_object_or_404(Product,pk=product_id)

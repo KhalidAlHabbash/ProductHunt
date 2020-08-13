@@ -14,5 +14,11 @@ class Product(models.Model):
     def __str__(self):
         return (self.product_title)
 
+    def summary(self):
+        if len(self.product_desc)>200:
+            return(self.product_desc[0:100] + "...")
+        else:
+            return(self.product_desc)
+
 
 
