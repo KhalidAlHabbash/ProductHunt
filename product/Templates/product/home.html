@@ -68,7 +68,7 @@
                         Product Hunt brings value to our Hunter by allowing other Hunters to express their opinion on ones project. This is beneficial as it helps improve and innovate one's idea to the greater. Strive for improvement with Product Hunt!
                     </div>
                     <div class="col-4 text-right">
-                        <img src="{% static 'letter-p.png' %}" class="img-fluid" width="100" />
+                        <img src="{% static 'car.png' %}" class="img-fluid" width="100" />
                     </div>
 
                 </div>
@@ -76,38 +76,27 @@
         </div>
 </div>
 
-  {% for product in all_products.all %}
-  <div class="row mb-6">
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">{{ product.product_title }}</h3>
-          <div class="mb-1 text-muted">{{ product.product_date}}</div>
-          <p class="card-text mb-auto">{{ product.summary }}</p>
-          <a href="{% url 'detail' product.id %}" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <img class="bd-placeholder-img" width="200" height="250" src="{{ product.product_icon.url }}" />
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">{{ product.product_title }}</h3>
-          <div class="mb-1 text-muted">{{ product.product_date}}</div>
-          <p class="mb-auto">{{ product.summary }}</p>
-          <a href="{% url 'detail' product.id %}" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <img class="bd-placeholder-img" width="200" height="250" src="{{ product.product_icon.url }}" />
-        </div>
-      </div>
-    </div>
+<div class="album py-5 bg-blue">
+    <div class="container">
 
-  </div>{% endfor %}
+      <div class="row">
+
+
+         {% for product in all_products.all %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+              <a href="{% url 'detail' product.id %}"> <img class="card-img-top" src="{{ product.product_image.url }}"/></a>
+            <div class="card-body bg-light">
+              <p class="card-text">{{ product.summary }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+  </div>
+
+
 
 
 

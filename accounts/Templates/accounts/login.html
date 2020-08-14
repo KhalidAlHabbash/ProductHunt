@@ -57,7 +57,7 @@
     {% csrf_token %}
     {% load static %}
 
-    <img class="pt-4 mb-4 img-fluid" src="{% static 'letter-p.png' %}" alt=""  width="50" height="50"> <br/>
+    <img class="pt-4 mb-4 img-fluid" src="{% static 'car.png' %}" alt=""  width="70" height="50"> <br/>
 <h4>Sign up to review and upload Hunts!</h4>
     {% if errorL %}
     <strong>{{ errorL }}</strong>
@@ -73,7 +73,7 @@
             <input type="checkbox" checked="checked" value="remember-me"> Remember me
         </label>
     </div>
-    <button class="btn btn-lg btn-primary " type="submit">Sign in</button>
+    <button class="btn btn-lg btn-info" type="submit">Sign in</button>
     <br/>
     <br/>
     <br/>

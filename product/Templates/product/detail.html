@@ -3,11 +3,11 @@
 {% block content %}
 <div class="row">
     <div class="col-2">
-        <img class="img-fluid" src="{{ products.product_icon.url }}"/>
+        <img class="img-fluid pt-4" src="{{ products.product_icon.url }}"/>
         <br/>
     </div>
     <div class="col-10">
-        <a href="{{ products.product_url }}"><h1>{{ products.product_title }}</h1></a>
+        <p><a href="{{ products.product_url }}" class="text-info"><h1>{{ products.product_title }}</h1></a></p>
         <br>
     </div>
 <br/>
