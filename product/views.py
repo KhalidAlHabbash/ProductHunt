@@ -3,6 +3,14 @@ from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
+from . import models
+
+def upvote(request,product_id):
+    if request.method == "POST":
+        products = get_object_or_404(Product, pk=product_id)
+        products.product_votes += 1
+        products.save()
+        return redirect('/products/' + str(products.id))
 
 @login_required
 def home(request):
