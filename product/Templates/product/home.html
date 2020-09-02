@@ -13,7 +13,9 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
 
     <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -76,25 +78,34 @@
         </div>
 </div>
 
-<div class="album py-5 bg-blue">
-    <div class="container">
 
-      <div class="row">
-
-
-         {% for product in all_products.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-              <a href="{% url 'detail' product.id %}"> <img class="card-img-top" src="{{ product.product_image.url }}"/></a>
-            <div class="card-body bg-light">
-              <p class="card-text">{{ product.summary }}</p>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
+      <div class="row pb-3 pt-3">
+          {% for product in all_products.all %}
+          <div class="col-4">
+              <a href="{% url 'detail' product.id %}"><img class="img-fluid pt-4" src="{{ product.product_icon.url }}"/> </a>
+          <br/>
           </div>
-        </div>
-  </div>
+          <div class="col-6 pt-4" onclick="window.location='{% url 'detail' product.id %}';" style="cursor:pointer">
+              <h1> {{ product.product_title }}</h1>
+              <p class="card-text pt-5">{{ product.product_desc }}</p>
+          </div>
+          <br/>
+          <br/>
+
+
+      <div class="col-2 pt-4">
+         <a  href="javascript:{document.getElementById('upvote {{ product.id }}').submit()}"><button class="btn btn-info btn-lg btn-block">Upvotes <span>&#8594;</span> {{ product.product_votes }}</button></a>
+
+      </div>
+           <form id='upvote {{ product.id }}' method="POST" action="{% url 'upvote' product.id %}">
+          {% csrf_token %}
+          <input type="hidden"/>
+      </form>
+
+          {% endfor %}
+      </div>
+
+
 
 
 

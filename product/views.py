@@ -3,8 +3,8 @@ from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from . import models
 
+@login_required
 def upvote(request,product_id):
     if request.method == "POST":
         products = get_object_or_404(Product, pk=product_id)
@@ -12,7 +12,8 @@ def upvote(request,product_id):
         products.save()
         return redirect('/products/' + str(products.id))
 
-@login_required
+
+
 def home(request):
     all_products = Product.objects
     return render(request,'product/home.html', {"all_products":all_products})

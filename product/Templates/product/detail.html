@@ -27,16 +27,19 @@
         <br/>
     </div>
     <br/>
+    {% load static %}
     <div class="col-4">
-        <h6><strong>Hunted by {{ products.hunter }}</strong> </h6>
+        <h5><strong> <img src="{% static 'focus.png' %}" width="20"/> {{ products.hunter }}</strong> </h5>
         <br/>
     </div>
+
     <div class="col-4 text-right">
-        <h6> <strong> on {{ products.product_date }} </strong> </h6>
+        <h5> <strong> <img src="{% static 'calendar.png' %}" width="17"/> {{ products.product_date }} </strong> </h5>
         <br>
     </div>
 
     <div class="col-8">
+
         <h6>{{ products.product_desc }}</h6>
         <br/>
     </div>
